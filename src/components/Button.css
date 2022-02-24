@@ -1,4 +1,35 @@
 .button {
-    min-width: 80px;
-    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 80px;
+    box-sizing: border-box;
+    margin-top: 4%;
+    margin-left: 4%;
+    border-radius: 10px;
+    border: none;
+    background-color: #999;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 0;
+}
+
+.red {
+    background-color: brown;
+}
+
+.white {
+    background-color: white;
+    color: #444;
+}
+
+.large {
+    justify-content: flex-start;
+    padding-left: 8%;
+    width: 44%;
+    margin: 4% 0;
+    margin-left: 4%;
+
 }
