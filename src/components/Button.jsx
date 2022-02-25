@@ -2,22 +2,23 @@ import React, { useEffect, useState } from 'react'
 
 import './Button.css'
 
-const Button = ({ children, onClick }) => {
-    console.log(children)
+const Button = ({ value , onClick }) => {
+    
     const [button, setButton] = useState("button")
     
     useEffect(() => {
-        if (children === "0") {
+        if (value === "0") {
             setButton("button large")
-        } else if(children === "C" || children === "x2" || children === "%") {
+        } else if(value === "C" || value === "x2" || value === "%") {
             setButton("button red")
-        } else if(children === "÷" || children === "X" || children === "-" || children === "+" || children === "=") {
+        } else if(value === "÷" || value === "X" || value === "-" || value === "+" || value === "=") {
             setButton("button white")
         }
     },{})
+
     return ( 
         <button onClick={onClick} className={button}>
-            {children}
+            {value}
         </button>
      );
 }
