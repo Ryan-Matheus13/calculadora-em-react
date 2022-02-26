@@ -6,7 +6,8 @@ import Display from './components/Display';
 //sfc
 const App = () => {
   
-  let select = document.querySelector(".display-result")
+  let teste = {}
+const [teste, setTeste] = useState(`${teste}`)
   const [state, setState] = useState("0")
 
   const handleInput = (e) => {
@@ -14,24 +15,28 @@ const App = () => {
   }
 
   const handleAddNumber = (e) => {
-    if(e.target.textContent == "0") {
-      setState("")
-      setState(state + e.target.textContent)
-    }
-    setState(state + e.target.textContent)
+    setState(state.replace(/^0+/, "") + e.target.textContent)
+    console.log()
   }
 
   const handleAddDecimal = (e) => {
-
+    if(state.indexOf(",") == -1 ) {
+      setState(state + ",")
+    } else {
+      console.log("teste")
+    }
   }
 
   const handleOperator = (e) => {
-    
+    setState(state + e.target.textContent)
+
+    teste[`valor ${Object.keys(teste).length + 1}`] = state
+    setState("")
+    console.log(teste)
   }
 
   const handleClearDisplay = (e) => {
     setState("0")
-    console.log(select.value)
   }
 
   return ( 

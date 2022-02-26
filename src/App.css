@@ -8,14 +8,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200vh;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
   background-color: #444;
-  min-width: 375px;
+  max-width: 375px;
   max-height: 619px;
   border: none;
   border-radius: 10px;
