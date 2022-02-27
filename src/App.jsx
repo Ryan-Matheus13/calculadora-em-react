@@ -6,8 +6,11 @@ import Display from './components/Display';
 //sfc
 const App = () => {
   
-  let teste = {}
-const [teste, setTeste] = useState(`${teste}`)
+  let teste1 = {
+    "valor1": 0,
+    "valor2": 0
+  }
+  const [teste, setTeste] = useState("")
   const [state, setState] = useState("0")
 
   const handleInput = (e) => {
@@ -15,6 +18,7 @@ const [teste, setTeste] = useState(`${teste}`)
   }
 
   const handleAddNumber = (e) => {
+    setTeste(teste1)
     setState(state.replace(/^0+/, "") + e.target.textContent)
     console.log()
   }
@@ -28,10 +32,12 @@ const [teste, setTeste] = useState(`${teste}`)
   }
 
   const handleOperator = (e) => {
-    setState(state + e.target.textContent)
+    console.log(teste)
+    setTeste(teste1)
+    teste.valor1 = state
+    console.log(teste1) 
+    setTeste(teste1)
 
-    teste[`valor ${Object.keys(teste).length + 1}`] = state
-    setState("")
     console.log(teste)
   }
 
