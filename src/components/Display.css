@@ -25,13 +25,6 @@
     padding-right: 10px;
 }
 
-.display-value {
-    display: none;
-    justify-content: flex-end;
-    font-weight: 600;
-    width: 100%;
-}
-
 .display-result:focus {
     box-shadow: 0 0 0 0;
     outline: 0;

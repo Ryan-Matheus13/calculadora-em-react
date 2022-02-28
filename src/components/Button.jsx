@@ -14,7 +14,7 @@ const Button = ({ value , onClick }) => {
         } else if(value === "÷" || value === "X" || value === "-" || value === "+" || value === "=") {
             setButton("button white")
         }
-    },{})
+    })
 
     return ( 
         <button onClick={onClick} className={button}>

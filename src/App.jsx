@@ -5,44 +5,71 @@ import Display from './components/Display';
 
 //sfc
 const App = () => {
-  
-  let teste1 = {
-    "valor1": 0,
-    "valor2": 0
-  }
-  const [teste, setTeste] = useState("")
+  const [calculo, setCalculo] = useState({
+      valor1: 0,
+      valor2: 0,
+      operador: "",
+      operando: false
+    })
   const [state, setState] = useState("0")
 
-  const handleInput = (e) => {
-    console.log(e.target.textContent)
+  const handleClearDisplay = () => {
+    setState("0")
+    setCalculo({valor1: 0, valor2: 0, operador: "", operando: false, resultado: 0})
   }
-
+    
   const handleAddNumber = (e) => {
-    setTeste(teste1)
-    setState(state.replace(/^0+/, "") + e.target.textContent)
-    console.log()
+    if (calculo.operando == true) {
+      if (state[0] == calculo.operador) {
+        setState(state.replace(calculo.operador, e.target.textContent))
+        calculo.valor2 = Number(e.target.textContent)
+      } else {
+        setState(state.replace(/^0+/, "") + e.target.textContent)
+        calculo.valor2 = Number(state + e.target.textContent)
+      }
+    } else {
+      setState(state.replace(/^0+/, "") + e.target.textContent)
+      calculo.valor1 = Number(state + e.target.textContent)
+    }
   }
 
   const handleAddDecimal = (e) => {
     if(state.indexOf(",") == -1 ) {
       setState(state + ",")
-    } else {
-      console.log("teste")
+    }
+  }
+
+  const handleOperation = ({operador, valor1, valor2}) => {
+    switch (operador) {
+      case "+":
+        return valor1 + valor2
+      case "-":
+        return valor1 - valor2
+      case "x":
+        return valor1 * valor2
+      case "÷":
+        return valor1 / valor2
+      case "%":
+        return (valor1 * valor2 / 100)
+      case "x2":
+        return valor1 ** valor2
+      default:
+        break;
     }
   }
 
   const handleOperator = (e) => {
-    console.log(teste)
-    setTeste(teste1)
-    teste.valor1 = state
-    console.log(teste1) 
-    setTeste(teste1)
-
-    console.log(teste)
+    if(calculo.operando == false) {
+      setState(e.target.textContent)
+      calculo.operador = e.target.textContent
+      calculo.operando = true
+    } else {
+      return
+    }
   }
 
-  const handleClearDisplay = (e) => {
-    setState("0")
+  const handleResult = () => {
+    setState(handleOperation(calculo))
   }
 
   return ( 
@@ -56,7 +83,7 @@ const App = () => {
         <Button value={"1"} onClick={handleAddNumber}/>
         <Button value={"2"} onClick={handleAddNumber}/>
         <Button value={"3"} onClick={handleAddNumber}/>
-        <Button value={"X"} onClick={handleOperator}/>
+        <Button value={"x"} onClick={handleOperator}/>
         <Button value={"4"} onClick={handleAddNumber}/>
         <Button value={"5"} onClick={handleAddNumber}/>
         <Button value={"6"} onClick={handleAddNumber}/>
@@ -67,7 +94,7 @@ const App = () => {
         <Button value={"+"} onClick={handleOperator}/>
         <Button value={"0"} onClick={handleAddNumber}/>
         <Button value={","} onClick={handleAddDecimal}/>
-        <Button value={"="} onClick={handleOperator}/>
+        <Button value={"="} onClick={handleResult}/>
       </div>
     </>
    );
