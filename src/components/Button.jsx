@@ -11,7 +11,7 @@ const Button = ({ value , onClick }) => {
             setButton("button large")
         } else if(value === "C" || value === "x2" || value === "%") {
             setButton("button red")
-        } else if(value === "÷" || value === "X" || value === "-" || value === "+" || value === "=") {
+        } else if(value === "÷" || value === "x" || value === "-" || value === "+" || value === "=") {
             setButton("button white")
         }
     })

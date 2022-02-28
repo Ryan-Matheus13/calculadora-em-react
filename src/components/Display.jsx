@@ -2,11 +2,11 @@ import React from 'react'
 
 import './Display.css'
 
-const Display = ( { state } ) => {
+const Display = ( { display } ) => {
     return ( 
         <div className='display-container'>
             <div className='display'>
-                <input value={state} className='display-result'/>
+                <input value={display} className='display-result'/>
             </div>
         </div>
      );
